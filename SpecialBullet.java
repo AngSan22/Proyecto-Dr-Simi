@@ -8,13 +8,16 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class SpecialBullet extends Bullet
 {
-    /**
-     * Act - do whatever the SpecialBullet wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
+    private int speedBullet;
+    
+    public SpecialBullet(int direction){
+        super(direction);
+    }
+    
     public void act()
     {
-        // Add your action code here.
+        moveBullet(speedBullet);
+        checkColissions();
     }
     
     public void checkColissions(){

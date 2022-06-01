@@ -6,23 +6,18 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class germBullet extends Bullet
+public class GermBullet extends Bullet
 {
-    /**
-     * Act - do whatever the germBullet wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
-    public void act()
-    {
-        // Add your action code here.
+    int speedBullet = 6;
+    
+    public GermBullet(int direction){
+        super(direction);
     }
     
-    protected void checkColissions(){
-        Bacteria enemy = (Bacteria)getOneIntersectingObject(Bacteria.class);
-        
-        if(enemy != null){
-            getWorld().removeObject(enemy);
-            getWorld().removeObject(this);
-        }
+    public void act()
+    {
+        moveBullet(speedBullet);
     }
+    
+
 }

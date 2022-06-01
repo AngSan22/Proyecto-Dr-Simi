@@ -38,7 +38,7 @@ public class Cerebro extends World
         addObject(plataforma12,444,483);
         Plataform1 plataforma13 = new Plataform1();
         addObject(plataforma13,783,337);
-        Bacteria1 bacteria1 = new Bacteria1();
+        Bacterium1 bacteria1 = new Bacterium1();
         addObject(bacteria1,781,173);
         bacteria1.setLocation(791,220);
         bacteria1.setLocation(789,212);
@@ -58,7 +58,7 @@ public class Cerebro extends World
         drSim.setLocation(115,295);
         plataforma1.setLocation(687,332);
         plataforma14.setLocation(676,337);
-        Bacteria4 bacteria4 = new Bacteria4();
+        Bacterium4 bacteria4 = new Bacterium4();
         addObject(bacteria4,729,493);
         bacteria4.setLocation(774,545);
         bacteria4.setLocation(849,576);

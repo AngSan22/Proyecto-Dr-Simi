@@ -18,7 +18,10 @@ public class DrSim extends Actor
     private int speedShot = 30;
     private int counterShot;
     
+    private int countPowerUp = 0;
+    
     private int energySpecial;
+    private boolean isShotSpecial = false;
     
     private DrSimHud drSimHud;
    
@@ -36,6 +39,7 @@ public class DrSim extends Actor
     {
         moveDrSim();
         
+        checkPowerUp();
         setShot();
         
         checkFalling();
@@ -68,6 +72,18 @@ public class DrSim extends Actor
         
     }
     
+    private void checkPowerUp(){
+        if(countPowerUp == 0){
+            speedShot = 30;
+        }
+    }
+    
+    private void setSpecialShot(){
+        if(isShotSpecial && Greenfoot.isKeyDown("c")){
+            
+        }
+    }
+    
     private void moveDrSim() {
         if(Greenfoot.isKeyDown("right")){
             move(4);
@@ -78,7 +94,7 @@ public class DrSim extends Actor
             direction = -1;
             setImage(images[2]);
         }
-        //setImage(images[0]);
+        
         if(Greenfoot.isKeyDown("space") && onPlataform() == true){
             vSpeed = jumpHeight;
             fall();
@@ -116,10 +132,11 @@ public class DrSim extends Actor
         
         if(item != null){
             getWorld().removeObject(item);
-            
+            countPowerUp = 100;
+            speedShot = speedShot/2;
         }
         
-        Bacteria enemy = (Bacteria)getOneIntersectingObject(Bacteria.class);
+        Bacterium enemy = (Bacterium)getOneIntersectingObject(Bacterium.class);
         
         if(enemy != null){
             drSimHud.setLifes(-1);

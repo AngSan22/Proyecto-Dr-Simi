@@ -12,32 +12,11 @@ public class PillBullet extends Bullet
     int position;
     
     public PillBullet(int direction){
-        position = direction;
+        super(direction);
     }
     public void act()
     {
-        moveBullet();
+        moveBullet(speedBullet);
         checkColissions();
     } 
-    
-    protected void moveBullet(){
-        switch(position){
-            case 1:
-                setLocation(getX() + speedBullet,getY());
-            break;
-            case -1:
-                setLocation(getX() - speedBullet,getY());
-            break;
-        }
-    }
-    
-    protected void checkColissions(){
-        Bacteria enemy = (Bacteria)getOneIntersectingObject(Bacteria.class);
-        
-        if(enemy != null){
-            enemy.spawnItem();
-            getWorld().removeObject(enemy);
-            getWorld().removeObject(this);
-        }
-    }
 }
