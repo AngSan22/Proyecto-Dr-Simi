@@ -9,6 +9,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Bacterium extends Actor
 {
     private int direction = -1;
+    protected int vida;
     
     public void act()
     {
@@ -79,5 +80,11 @@ public class Bacterium extends Actor
             GermBullet germ = new GermBullet(direction);
             getWorld().addObject(germ, getX(), getY());
         }
+    }
+    
+    public void getDamage(){
+        vida--;
+        
+        
     }
 }
