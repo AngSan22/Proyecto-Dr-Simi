@@ -16,4 +16,18 @@ public class Bacteria extends Actor
     {
         // Add your action code here.
     }
+    
+    public void spawnItem(){
+        int probability = Greenfoot.getRandomNumber(10);
+        Item item = null;
+        
+        if(probability == 3){
+            item = new ExtraLife();
+            getWorld().addObject(item, getX(), getY());
+        }else if(probability == 7){
+            item = new PowerUp();
+            getWorld().addObject(item, getX(), getY());
+        }
+        
+    }
 }

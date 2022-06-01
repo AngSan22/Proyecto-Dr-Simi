@@ -35,6 +35,7 @@ public class PillBullet extends Bullet
         Bacteria enemy = (Bacteria)getOneIntersectingObject(Bacteria.class);
         
         if(enemy != null){
+            enemy.spawnItem();
             getWorld().removeObject(enemy);
             getWorld().removeObject(this);
         }

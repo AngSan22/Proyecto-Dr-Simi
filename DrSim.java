@@ -15,8 +15,10 @@ public class DrSim extends Actor
     
     private int direction = 1;
     private boolean isShot = false;
-    private int speedShot = 12;
+    private int speedShot = 30;
     private int counterShot;
+    
+    private int energySpecial;
     
     private DrSimHud drSimHud;
    
@@ -37,6 +39,8 @@ public class DrSim extends Actor
         setShot();
         
         checkFalling();
+        
+        checkColissions();
     }
     
     private void setShot(){
@@ -46,7 +50,7 @@ public class DrSim extends Actor
             return;
         }
         
-        if(isShot && Greenfoot.isKeyDown("x")){
+        if(isShot && Greenfoot.isKeyDown("z")){
             PillBullet pill = new PillBullet(direction);
             getWorld().addObject(pill, getX(), getY());
             if(direction == 1){
@@ -58,7 +62,7 @@ public class DrSim extends Actor
             isShot = false;
             counterShot = 0;
         }
-        if(!isShot && Greenfoot.isKeyDown("x")){
+        if(!isShot && Greenfoot.isKeyDown("z")){
             isShot = true;
         }
         
@@ -99,12 +103,13 @@ public class DrSim extends Actor
         }
     }
     
+    
     private void checkColissions(){
         Item item = (ExtraLife)getOneIntersectingObject(ExtraLife.class);
         
         if(item != null){
             getWorld().removeObject(item);
-            drSimHud.setLifes();
+            drSimHud.setLifes(1);
         }
         
         item = (PowerUp)getOneIntersectingObject(PowerUp.class);
@@ -112,6 +117,12 @@ public class DrSim extends Actor
         if(item != null){
             getWorld().removeObject(item);
             
+        }
+        
+        Bacteria enemy = (Bacteria)getOneIntersectingObject(Bacteria.class);
+        
+        if(enemy != null){
+            drSimHud.setLifes(-1);
         }
     }
 }

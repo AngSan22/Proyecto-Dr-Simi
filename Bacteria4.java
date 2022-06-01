@@ -18,7 +18,7 @@ public class Bacteria4 extends Bacteria
     }
     
     private void moveBacterium(){
-        DrSim drSim = Estomago.getDrSimInWorld();
+        DrSim drSim = Cerebro.getDrSimInWorld();
         
        turnTowards(drSim.getX(), drSim.getY());
        moveRandom();

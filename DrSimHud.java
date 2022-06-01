@@ -10,11 +10,13 @@ public class DrSimHud extends Actor
 {
     private int score;
     private int level;
-    private int lifes;
+    private int lifes = 3;
+    private int special;
     
     public void act()
     {
         refresh();
+        checkLifes();
     }
     
      private void refresh(){
@@ -27,7 +29,14 @@ public class DrSimHud extends Actor
         this.score = score;
     }
     
-    public void setLifes(){
-        this.lifes ++;
+    public void setLifes(int lifes){
+        this.lifes = this.lifes + lifes;
+        
+    }
+    
+    private void checkLifes(){
+        if(lifes == 0){
+            Greenfoot.stop();
+        }
     }
 }

@@ -14,10 +14,7 @@ public class PowerUp extends Item
      */
     public void act()
     {
-        // Add your action code here.
+        checkFalling();
     }
     
-    public void getEffect(){
-        
-    }
 }
