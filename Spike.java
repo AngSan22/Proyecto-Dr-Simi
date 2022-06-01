@@ -14,6 +14,14 @@ public class Spike extends Plataform
      */
     public void act()
     {
-        // Add your action code here.
+
     }
+    
+     private void checkColissions(){
+         DrSim drSim = (DrSim)getOneIntersectingObject(DrSim.class);
+        
+        if(drSim != null){
+            drSim.getDamage();
+        }
+     }
 }

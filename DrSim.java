@@ -19,11 +19,13 @@ public class DrSim extends Actor
     private int counterShot;
     
     private int countPowerUp = 0;
+    private int countInvincibility = 0;
     
     private int energySpecial;
     private boolean isShotSpecial = false;
     
     private DrSimHud drSimHud;
+    private int score = 0;
    
     public DrSim(DrSimHud drSimHud){
         images = new GreenfootImage[5];
@@ -119,6 +121,14 @@ public class DrSim extends Actor
         }
     }
     
+    public void getDamage(){
+        drSimHud.setLifes(-1);
+        countInvincibility = 60;
+    }
+    public void addScore(int score){
+       this.score = this.score + score;
+        drSimHud.setScore(score); 
+    }
     
     private void checkColissions(){
         Item item = (ExtraLife)getOneIntersectingObject(ExtraLife.class);
@@ -126,6 +136,8 @@ public class DrSim extends Actor
         if(item != null){
             getWorld().removeObject(item);
             drSimHud.setLifes(1);
+            
+            addScore(item.getScore());
         }
         
         item = (PowerUp)getOneIntersectingObject(PowerUp.class);
@@ -134,12 +146,20 @@ public class DrSim extends Actor
             getWorld().removeObject(item);
             countPowerUp = 100;
             speedShot = speedShot/2;
+            
+            addScore(item.getScore());
         }
         
+        if(countInvincibility > 0){
+            countInvincibility--;
+            return;
+        }
+
         Bacterium enemy = (Bacterium)getOneIntersectingObject(Bacterium.class);
+        Spike spike = (Spike)getOneIntersectingObject(Spike.class);
         
-        if(enemy != null){
-            drSimHud.setLifes(-1);
+        if(enemy != null || spike != null){
+            getDamage();
         }
     }
 }

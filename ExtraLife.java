@@ -17,5 +17,8 @@ public class ExtraLife extends Item
        checkFalling(); 
     }
     
+    public int getScore(){
+        return 100;
+    }
 
 }

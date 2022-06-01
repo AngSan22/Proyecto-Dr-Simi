@@ -8,12 +8,16 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Bacterium2 extends Bacterium
 {
-    /**
-     * Act - do whatever the Bacteria2 wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
+    public  Bacterium2(){
+        super(1);
+    }
+    
     public void act()
     {
         attackBacterium();
+    }
+    
+    public int getScore(){
+        return 50;
     }
 }

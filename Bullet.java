@@ -8,7 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public abstract class Bullet extends Actor
 {
-    int position;
+    protected int position;
     
     public Bullet(int direction){
         position = direction;
@@ -34,7 +34,7 @@ public abstract class Bullet extends Actor
         Bacterium enemy = (Bacterium)getOneObjectAtOffset(0,0,Bacterium.class);
         
         if(enemy != null){
-            getWorld().removeObject(enemy);
+            enemy.getDamage();
             getWorld().removeObject(this);
         }else if((getX() >= getWorld().getWidth()-5) || (getX() <= 5) ){
             getWorld().removeObject(this);

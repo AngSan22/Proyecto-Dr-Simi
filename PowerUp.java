@@ -17,4 +17,7 @@ public class PowerUp extends Item
         checkFalling();
     }
     
+    public int getScore(){
+        return 70;
+    }
 }

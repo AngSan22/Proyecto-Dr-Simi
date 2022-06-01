@@ -1,20 +1,20 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Bacteria4 here.
+ * Write a description of class Bacteria6 here.
  * 
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Bacterium4 extends Bacterium
+public class Bacterium6 extends Bacterium
 {
-    public  Bacterium4(){
-        super(2);
+    public  Bacterium6(){
+        super(1);
     }
     
     public void act()
     {
-          moveBacteriumToPersecute();
+         moveBacteriumToPersecute();
     }
     
     public int getScore(){

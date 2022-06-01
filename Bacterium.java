@@ -6,15 +6,21 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Bacterium extends Actor
+public abstract class Bacterium extends Actor
 {
-    private int direction = -1;
+    protected int direction = -1;
     protected int vida;
+    
+    public Bacterium(int vida){
+        this.vida = vida;
+    }
     
     public void act()
     {
         // Add your action code here.
     }
+    
+    public abstract int getScore();
     
     public void spawnItem(){
         int probability = Greenfoot.getRandomNumber(10);
@@ -85,6 +91,11 @@ public class Bacterium extends Actor
     public void getDamage(){
         vida--;
         
-        
+        if(vida == 0){
+            DrSim drSim = Cerebro.getDrSimInWorld();
+            drSim.addScore(getScore());
+            spawnItem();
+            getWorld().removeObject(this);
+        }
     }
 }

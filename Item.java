@@ -16,6 +16,8 @@ public abstract class Item extends Actor
     {
     }
     
+    public abstract int getScore();
+    
     private void fall(){
         setLocation(getX(), getY() + vSpeed);
         vSpeed = vSpeed + gravity; 
