@@ -8,7 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class SpecialBullet extends Bullet
 {
-    private int speedBullet;
+    private int speedBullet = 6;
     
     public SpecialBullet(int direction){
         super(direction);

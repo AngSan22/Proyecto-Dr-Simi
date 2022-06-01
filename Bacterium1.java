@@ -11,7 +11,7 @@ public class Bacterium1 extends Bacterium
     private int direction = -1;
     
     public  Bacterium1(){
-        super(3);
+        super(3, Cerebro.getDrSimInWorld());
     }
     
     public void act()
@@ -23,4 +23,7 @@ public class Bacterium1 extends Bacterium
         return 50;
     }
     
+    public int getEnergySpecial(){
+        return 10;
+    }
 }

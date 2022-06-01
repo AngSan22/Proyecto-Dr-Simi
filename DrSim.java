@@ -9,20 +9,22 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class DrSim extends Actor
 {
     private GreenfootImage []images;
-    private int vSpeed = 0;
+    private int speed = 4;
+    private int jumpSpeed = 0;
     private int jumpHeight = -20;
     private int gravity = 1;
+    
+    private int countPowerUp = 0;
+    private int countInvincibility = 0;
     
     private int direction = 1;
     private boolean isShot = false;
     private int speedShot = 30;
     private int counterShot;
     
-    private int countPowerUp = 0;
-    private int countInvincibility = 0;
-    
-    private int energySpecial;
+    private int energy = 90;
     private boolean isShotSpecial = false;
+    private Special vaccine = new Special();
     
     private DrSimHud drSimHud;
     private int score = 0;
@@ -43,6 +45,8 @@ public class DrSim extends Actor
         
         checkPowerUp();
         setShot();
+        
+        setSpecialShot();
         
         checkFalling();
         
@@ -80,32 +84,48 @@ public class DrSim extends Actor
         }
     }
     
+    private void checkSpecialShot(){
+        if(energy == 100){
+            isShotSpecial = true;
+        }
+    }
+    
     private void setSpecialShot(){
+        checkSpecialShot();
+        
         if(isShotSpecial && Greenfoot.isKeyDown("c")){
+            vaccine.setLocation(getX() + 20, getY());
             
+            SpecialBullet pill = new SpecialBullet(direction);
+            getWorld().addObject(pill, getX(), getY());
+            energy--;
+        }
+        
+        if(isShotSpecial && energy == 0){
+            isShotSpecial = false;
         }
     }
     
     private void moveDrSim() {
         if(Greenfoot.isKeyDown("right")){
-            move(4);
+            move(speed);
             direction = 1;
             setImage(images[1]);
         }else if(Greenfoot.isKeyDown("left")){
-            move(-4);
+            move(-speed);
             direction = -1;
             setImage(images[2]);
         }
         
         if(Greenfoot.isKeyDown("space") && onPlataform() == true){
-            vSpeed = jumpHeight;
+            jumpSpeed = jumpHeight;
             fall();
         }
     }
     
     private void fall(){
-        setLocation(getX(), getY() + vSpeed);
-        vSpeed = vSpeed + gravity; 
+        setLocation(getX(), getY() + jumpSpeed);
+        jumpSpeed = jumpSpeed + gravity; 
     }
     
     private boolean onPlataform(){
@@ -113,21 +133,37 @@ public class DrSim extends Actor
         return under != null;
     }
     
+    private void plataformOnTheJump(){
+        Plataform plataform = (Plataform)getOneObjectAtOffset(0, -getImage().getHeight()/2, Plataform.class);
+        
+        if(plataform != null){
+           jumpSpeed = 1;
+           setLocation(getX(), getY() + jumpSpeed);
+        }
+    }
+    
     public void checkFalling(){
         if(onPlataform() == false){
+            plataformOnTheJump();
             fall();
         }else{
-            vSpeed = 0;
+            jumpSpeed = 0;
         }
     }
     
     public void getDamage(){
         drSimHud.setLifes(-1);
-        countInvincibility = 60;
+        countInvincibility = 80;
     }
+    
     public void addScore(int score){
        this.score = this.score + score;
-        drSimHud.setScore(score); 
+        drSimHud.setScore(this.score); 
+    }
+    
+    public void addEnergy(int energy){
+        this.energy = this.energy + energy;
+        drSimHud.setEnergySpecial(this.energy);
     }
     
     private void checkColissions(){
@@ -144,7 +180,7 @@ public class DrSim extends Actor
         
         if(item != null){
             getWorld().removeObject(item);
-            countPowerUp = 100;
+            countPowerUp = 200;
             speedShot = speedShot/2;
             
             addScore(item.getScore());

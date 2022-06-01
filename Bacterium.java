@@ -10,9 +10,11 @@ public abstract class Bacterium extends Actor
 {
     protected int direction = -1;
     protected int vida;
+    protected DrSim drSim = null;
     
-    public Bacterium(int vida){
+    public Bacterium(int vida, DrSim drSim){
         this.vida = vida;
+        this.drSim = drSim;
     }
     
     public void act()
@@ -21,6 +23,8 @@ public abstract class Bacterium extends Actor
     }
     
     public abstract int getScore();
+    
+    public abstract int getEnergySpecial();
     
     public void spawnItem(){
         int probability = Greenfoot.getRandomNumber(10);
@@ -58,8 +62,6 @@ public abstract class Bacterium extends Actor
     }
     
     protected void moveBacteriumToPersecute(){
-        DrSim drSim = Cerebro.getDrSimInWorld();
-        
        turnTowards(drSim.getX(), drSim.getY());
        moveRandom();
     }
@@ -92,9 +94,10 @@ public abstract class Bacterium extends Actor
         vida--;
         
         if(vida == 0){
-            DrSim drSim = Cerebro.getDrSimInWorld();
             drSim.addScore(getScore());
+            drSim.addEnergy(getEnergySpecial());
             spawnItem();
+            
             getWorld().removeObject(this);
         }
     }

@@ -6,14 +6,22 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Boss3 extends Boss
+public class Boss3 extends Bacterium
 {
-    /**
-     * Act - do whatever the Boss3 wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
+    public  Boss3(){
+        super(20, Cerebro.getDrSimInWorld());
+    }
+    
     public void act()
     {
         // Add your action code here.
+    }
+    
+    public int getScore(){
+        return 500;
+    }
+    
+    public int getEnergySpecial(){
+        return 0;
     }
 }

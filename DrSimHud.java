@@ -23,6 +23,7 @@ public class DrSimHud extends Actor
         getWorld().showText("Level: " + level, 100, 30);
         getWorld().showText("Lifes: " + lifes, 250, 30);
         getWorld().showText("Score: " + score, 400, 30);
+        getWorld().showText("Special: " + special, 550, 30);
     }
     
     public void setScore(int score){
@@ -32,6 +33,10 @@ public class DrSimHud extends Actor
     public void setLifes(int lifes){
         this.lifes = this.lifes + lifes;
         
+    }
+    
+    public void setEnergySpecial(int special){
+        this.special = special;
     }
     
     private void checkLifes(){
