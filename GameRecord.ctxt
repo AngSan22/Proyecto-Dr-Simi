@@ -1,0 +1,20 @@
+#BlueJ class context
+comment0.target=GameRecord
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ GameRecord\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=playerName\ score
+comment1.target=GameRecord(java.lang.String,\ int)
+comment2.params=
+comment2.target=void\ act()
+comment3.params=score
+comment3.target=void\ setScore(int)
+comment4.params=
+comment4.target=int\ getScore()
+comment5.params=playerName
+comment5.target=void\ setPlayerName(java.lang.String)
+comment6.params=
+comment6.target=java.lang.String\ getPlayerName()
+comment7.params=o
+comment7.target=boolean\ equals(java.lang.Object)
+comment8.params=
+comment8.target=int\ hashCode()
+numComments=9

@@ -1,8 +1,8 @@
 #BlueJ class context
 comment0.target=Bacterium
 comment0.text=\r\n\ Write\ a\ description\ of\ class\ Bacteria\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
-comment1.params=vida\ drSim
-comment1.target=Bacterium(int,\ DrSim)
+comment1.params=vida\ speed\ drSim
+comment1.target=Bacterium(int,\ int,\ DrSim)
 comment10.params=
 comment10.target=void\ moveRandom()
 comment11.params=x

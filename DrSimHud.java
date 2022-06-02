@@ -41,7 +41,14 @@ public class DrSimHud extends Actor
     
     private void checkLifes(){
         if(lifes == 0){
+            GameRecord gameRecord = new GameRecord(Greenfoot.ask("Nombre del Jugador: "), score );
+            RecordsManager recordsManager = new RecordsManager("GameRecords.txt", 100);
+            recordsManager.save(gameRecord);
             Greenfoot.stop();
         }
+    }
+    
+    public int getScore(){
+        return score;
     }
 }
