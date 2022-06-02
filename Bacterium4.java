@@ -15,6 +15,7 @@ public class Bacterium4 extends Bacterium
     public void act()
     {
           moveBacteriumToPersecute();
+          attackBacterium();
     }
     
     public int getScore(){

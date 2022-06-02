@@ -8,6 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public abstract class Bacterium extends Actor
 {
+    protected int speed = 4;
     protected int direction = -1;
     protected int vida;
     protected DrSim drSim = null;
@@ -50,7 +51,7 @@ public abstract class Bacterium extends Actor
            takeDirection();
        }
        
-       move(4 * direction);
+       move(speed * direction);
     }
     
     private void takeDirection(){
@@ -67,7 +68,7 @@ public abstract class Bacterium extends Actor
     }
     
      public void moveRandom(){
-        move(1);
+        move(speed);
         if(Greenfoot.getRandomNumber(100)<10){
             turn(Greenfoot.getRandomNumber(100)-45);
         }
@@ -78,7 +79,7 @@ public abstract class Bacterium extends Actor
             direction = direction * -1;
         }
         
-        move(4 * direction);
+        move(speed * direction);
     }
     
     protected void attackBacterium(){

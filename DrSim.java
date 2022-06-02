@@ -85,24 +85,23 @@ public class DrSim extends Actor
     }
     
     private void checkSpecialShot(){
-        if(energy == 100){
+        if(energy == 100 && Greenfoot.isKeyDown("c")){
+            vaccine.setLocation(getX() + 20, getY());
             isShotSpecial = true;
+        }
+        
+        if(isShotSpecial && energy == 0){
+            isShotSpecial = false;
         }
     }
     
     private void setSpecialShot(){
         checkSpecialShot();
         
-        if(isShotSpecial && Greenfoot.isKeyDown("c")){
-            vaccine.setLocation(getX() + 20, getY());
-            
+        if(isShotSpecial){
             SpecialBullet pill = new SpecialBullet(direction);
             getWorld().addObject(pill, getX(), getY());
             energy--;
-        }
-        
-        if(isShotSpecial && energy == 0){
-            isShotSpecial = false;
         }
     }
     
