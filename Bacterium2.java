@@ -9,7 +9,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Bacterium2 extends Bacterium
 {
     public  Bacterium2(){
-        super(1,Cerebro.getDrSimInWorld());
+        super(1, 4, Cerebro.getDrSimInWorld());
     }
     
     public void act()

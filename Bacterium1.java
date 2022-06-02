@@ -11,7 +11,7 @@ public class Bacterium1 extends Bacterium
     private int direction = -1;
     
     public  Bacterium1(){
-        super(3, Cerebro.getDrSimInWorld());
+        super(3, 4, Cerebro.getDrSimInWorld());
     }
     
     public void act()

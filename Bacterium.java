@@ -13,8 +13,9 @@ public abstract class Bacterium extends Actor
     protected int vida;
     protected DrSim drSim = null;
     
-    public Bacterium(int vida, DrSim drSim){
+    public Bacterium(int vida, int speed, DrSim drSim){
         this.vida = vida;
+        this.speed = speed;
         this.drSim = drSim;
     }
     

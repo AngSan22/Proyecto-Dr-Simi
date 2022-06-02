@@ -20,7 +20,4 @@ public class SpecialBullet extends Bullet
         checkColissions();
     }
     
-    public void checkColissions(){
-        
-    }
 }

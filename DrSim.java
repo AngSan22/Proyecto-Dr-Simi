@@ -24,6 +24,8 @@ public class DrSim extends Actor
     
     private int energy = 90;
     private boolean isShotSpecial = false;
+    private int speedShotSpecial = 8;
+    private int counterShotSpecial;
     private Special vaccine = new Special();
     
     private DrSimHud drSimHud;
@@ -86,11 +88,12 @@ public class DrSim extends Actor
     
     private void checkSpecialShot(){
         if(energy == 100 && Greenfoot.isKeyDown("c")){
-            vaccine.setLocation(getX() + 20, getY());
+            getWorld().addObject(vaccine, getX(), getY());
             isShotSpecial = true;
         }
         
         if(isShotSpecial && energy == 0){
+            getWorld().removeObject(vaccine);
             isShotSpecial = false;
         }
     }
@@ -98,10 +101,19 @@ public class DrSim extends Actor
     private void setSpecialShot(){
         checkSpecialShot();
         
+        
         if(isShotSpecial){
+            counterShotSpecial++;
+        
+            if(counterShotSpecial < speedShotSpecial){
+                return;
+            }
+            
             SpecialBullet pill = new SpecialBullet(direction);
             getWorld().addObject(pill, getX(), getY());
-            energy--;
+            
+            energy = energy - 10;
+            counterShotSpecial = 0;
         }
     }
     
