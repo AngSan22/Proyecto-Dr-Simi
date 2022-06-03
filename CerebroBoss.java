@@ -9,6 +9,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class CerebroBoss extends World
 {
     public static DrSim drSim;
+    private int timer = 1000;
 
     /**
      * Constructor for objects of class CerebroBoss.
@@ -32,7 +33,7 @@ public class CerebroBoss extends World
         Plataform2 plataforma2 = new Plataform2();
         
         Boss1 boss1 = new Boss1();
-        addObject(boss1, 700, 600);
+        addObject(boss1, 700, 700);
         
         addObject(new Plataform3(), 80, 770);
         addObject(new Plataform3(), 250, 770);
@@ -49,6 +50,20 @@ public class CerebroBoss extends World
         addObject(new Plataform2(), 800, 430);
         addObject(new Plataform2(), 350, 250);
         addObject(new Plataform2(), 710, 250);
+    }
+    
+    public void act(){
+        timer--;
+        ExtraLife extraLife = new ExtraLife();
+        PowerUp powerUp = new PowerUp();
+        
+        if(timer == 500){
+            addObject(extraLife, 710, 200);
+        }
+        
+        if(timer == 250){
+            addObject(powerUp, 80, 730);
+        }
     }
     
     public static DrSim getDrSimInWorld(){

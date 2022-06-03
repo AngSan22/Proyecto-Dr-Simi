@@ -29,6 +29,7 @@ public class PulmonDer extends World
         addObject(drSim, 150, 150);
         drSim.setLocation(400,320);
         
+        
         //Bacteria
         Bacterium3 bac3 = new Bacterium3();
         addObject(bac3, 100, 650);
@@ -62,6 +63,7 @@ public class PulmonDer extends World
         timer--;
         Bacterium3 bac3 = new Bacterium3();
         Bacterium2 bac2 = new Bacterium2();
+        ExtraLife extraLife = new ExtraLife();
         //addObject(bac2, 600, 130);
         
         if(timer == 1750){
@@ -74,6 +76,7 @@ public class PulmonDer extends World
         
         if(timer == 1250){
             addObject(bac3, 700, 700);
+            addObject(extraLife, 700, 700);
         }
         
         if(timer == 1000){
@@ -96,7 +99,7 @@ public class PulmonDer extends World
         if(timer == 0){
             addObject(bac3, 100, 400);
             addObject(bac3, 700, 400);
-            addObject(bac2, 600, 130);
+            addObject(bac2, 700, 700);
         }
     }
 }
