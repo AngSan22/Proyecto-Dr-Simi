@@ -11,7 +11,11 @@ public class Bacterium1 extends Bacterium
     private int direction = -1;
     
     public  Bacterium1(){
-        super(3, 4, Cerebro.getDrSimInWorld());
+        super(3, 4, Estomago.getDrSimInWorld());
+        GreenfootImage myImage = getImage();
+        int myNewHeight = (int)myImage.getHeight()/2;
+        int myNewWidth = (int)myImage.getWidth()/2;
+        myImage.scale(myNewWidth, myNewHeight);
     }
     
     public void act()
