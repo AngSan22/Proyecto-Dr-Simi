@@ -22,7 +22,7 @@ public class DrSim extends Actor
     private int speedShot = 30;
     private int counterShot;
     
-    private int energy = 90;
+    private int energy = 0;
     private boolean isShotSpecial = false;
     private int speedShotSpecial = 8;
     private int counterShotSpecial;
@@ -213,5 +213,9 @@ public class DrSim extends Actor
         if(enemy != null || spike != null){
             getDamage();
         }
+    }
+    
+    public DrSimHud getDrSimHud(){
+        return drSimHud;
     }
 }
