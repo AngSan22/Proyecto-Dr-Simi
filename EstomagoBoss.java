@@ -10,20 +10,23 @@ public class EstomagoBoss extends World
 {
     public static DrSim drSim;
     private int timer = 2000;
+    public DrSimHud hud;
 
     /**
      * Constructor for objects of class EstomagoBoss.
      * 
      */
-    public EstomagoBoss()throws Exception
-    {    
+    public EstomagoBoss(DrSim drSim)throws Exception
+    {
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
-        super(800, 800, 1); 
+        super(800, 800, 1);
+        this.drSim = drSim;
         prepare();
     }
     
     private void prepare() throws Exception{
-        DrSimHud hud = new DrSimHud();
+        hud =drSim.getDrSimHud();
+        
         addObject(hud, 0, 0);
 
         drSim = new DrSim(hud);
@@ -65,6 +68,14 @@ public class EstomagoBoss extends World
         
         if(timer == 1000){
             addObject(powerUp, 650, 100);
+        }
+        
+        try{
+            if(hud.getScore() >= 650){
+                 Greenfoot.setWorld(new PulmonDer(drSim));
+            }
+        }catch(Exception ex){
+        
         }
     }
     

@@ -1,0 +1,5 @@
+ Tadeo,990
+ZZZ,640
+Pidu,270
+z,150
+Pidu,0

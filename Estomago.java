@@ -14,6 +14,7 @@ public class Estomago extends World
     private int timer = 250;
     private int timer0 = 1;
     private int timer2 = 450;
+    public DrSimHud hud;
     
     /**
      * Constructor for objects of class MyWorld.
@@ -27,14 +28,15 @@ public class Estomago extends World
     
     private void prepare() throws Exception
     {
-        DrSimHud hud = new DrSimHud();
+        hud  =  new DrSimHud();
         addObject(hud, 0, 0);
         
-        Bacterium6 bac6 = new Bacterium6();
-        addObject(bac6, 640, 100);
+
+        //Bacterium6 bac6 = new Bacterium6();
+        //addObject(bac6, 640, 100);
         //Bacterium6 bac66 = new Bacterium6();
         //addObject(bac66, 100, 100);
-        
+
         //Bacterium1 bac1 = new Bacterium1();
         //addObject(bac1, 470, 470);
 
@@ -49,16 +51,16 @@ public class Estomago extends World
         addObject(new Plataform1(), 390, 790);
         addObject(new Plataform1(), 530, 735);
         addObject(new Plataform1(), 700, 735);
-        
+
         //2da fila
         addObject(new Plataform1(), 180, 535);
         addObject(new Plataform1(), 470, 535);
         addObject(new Plataform1(), 640, 535);
-        
+
         //3ra fila
         addObject(new Plataform1(), 350, 320);
         addObject(new Plataform1(), 650, 320);
-        
+
         //4ta fila
         addObject(new Plataform1(), 150, 200);
     }
@@ -67,12 +69,26 @@ public class Estomago extends World
     timer--;
     timer0--;
     timer2 --;
+    Bacterium6 bac6 = new Bacterium6();
     
-    if (timer == 0) {
-        Bacterium6 bac666 = new Bacterium6();
-        addObject(bac666, xx, yy);
+    try{
+        if(hud.getScore() >= 150){
+             Greenfoot.setWorld(new EstomagoBoss(drSim));
+        }
+    }catch(Exception ex){
+        
+    }
+    
+    if (timer == 150) {
+        addObject(bac6, xx, yy);
         Bacterium1 bac1 = new Bacterium1();
         addObject(bac1, 470, 470);
+    }
+    
+    if (timer == 0) {
+        addObject(bac6, xx, yy);
+        //Bacterium1 bac1 = new Bacterium1();
+        //addObject(bac1, 470, 470);
     }
     
     if (timer2 == 0) {

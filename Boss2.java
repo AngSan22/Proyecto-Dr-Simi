@@ -9,12 +9,17 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Boss2 extends Bacterium
 {
     public  Boss2(){
-        super(20, 4, Cerebro.getDrSimInWorld());
+        super(20, 2, PulmonBoss.getDrSimInWorld());
+        GreenfootImage myImage = getImage();
+        int myNewHeight = (int)myImage.getHeight()*2;
+        int myNewWidth = (int)myImage.getWidth()*2;
+        myImage.scale(myNewWidth, myNewHeight);
     }
     
     public void act()
     {
-        // Add your action code here.
+        moveBacteriumToPersecute();
+        attackBacterium();
     }
     
     public int getScore(){

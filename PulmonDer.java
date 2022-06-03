@@ -10,22 +10,23 @@ public class PulmonDer extends World
 {
     public static DrSim drSim;
     private int timer = 2000;
+    public DrSimHud hud;
 
     /**
      * Constructor for objects of class PulmonDer.
      * 
      */
-    public PulmonDer() throws Exception
+    public PulmonDer(DrSim drSim) throws Exception
     {    
         super(800, 800, 1); 
+        this.drSim = drSim;
         prepare();
     }
     
     private void prepare() throws Exception{
         //Simi
-        DrSimHud hud = new DrSimHud();
+        hud = drSim.getDrSimHud();;
         addObject(hud, 0, 0);
-        drSim = new DrSim(hud);
         addObject(drSim, 150, 150);
         drSim.setLocation(400,320);
         
@@ -101,5 +102,14 @@ public class PulmonDer extends World
             addObject(bac3, 700, 400);
             addObject(bac2, 700, 700);
         }
+        
+        try{
+            if(hud.getScore() >= 800){
+                 Greenfoot.setWorld(new PulmonBoss(drSim));
+            }
+        }catch(Exception ex){
+        
+        }
+    
     }
 }

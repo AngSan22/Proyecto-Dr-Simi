@@ -19,6 +19,7 @@ public class DrSimHud extends Actor
         checkLifes();
     }
     
+    
      private void refresh(){
         getWorld().showText("Level: " + level, 100, 30);
         getWorld().showText("Lifes: " + lifes, 250, 30);
@@ -41,7 +42,16 @@ public class DrSimHud extends Actor
     
     private void checkLifes(){
         if(lifes == 0){
-            Greenfoot.stop();
+            GameRecord gameRecord = new GameRecord(Greenfoot.ask("Nombre del Jugador: "), score );
+            RecordsManager recordsManager = new RecordsManager("records.txt", 100);
+            recordsManager.save(gameRecord);
+            Greenfoot.setWorld(new Score());
         }
     }
+    
+    public int getScore(){
+        return score;
+    }
+    
+    
 }

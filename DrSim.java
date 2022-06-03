@@ -41,6 +41,11 @@ public class DrSim extends Actor
         
         this.drSimHud = drSimHud;
     }
+    
+    public DrSimHud getDrSimHud(){
+        return drSimHud;
+    }
+    
     public void act()
     {
         moveDrSim();

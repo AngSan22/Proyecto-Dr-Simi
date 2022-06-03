@@ -9,6 +9,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Cerebro extends World
 {
     public static DrSim drSim;
+    public DrSimHud hud;
+    
     int x = 100, y = 100;
     private int timer = 350;
     private int timer2 = 700;
@@ -18,19 +20,19 @@ public class Cerebro extends World
      * Constructor for objects of class MyWorld.
      * 
      */
-    public Cerebro() throws Exception
+    public Cerebro(DrSim drSim) throws Exception
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
-        super(1000, 800, 1); 
+        super(1000, 800, 1);
+        this.drSim = drSim;
         prepare();
     }
     
     private void prepare() throws Exception
     {
-        DrSimHud hud = new DrSimHud();
+        hud =drSim. getDrSimHud();
         addObject(hud, 0, 0);
 
-        drSim = new DrSim(hud);
         addObject(drSim, 50, 700);
         
         //Enemigos
@@ -77,6 +79,15 @@ public class Cerebro extends World
         Bacterium4 bac444 = new Bacterium4();
         addObject(bac444, 50, 50);
     }
+    
+    try{
+        if(hud.getScore() >= 1450){
+                 Greenfoot.setWorld(new CerebroBoss(drSim));
+        }
+    }catch(Exception ex){
+        
+    }
+    
 }
     
     public static DrSim getDrSimInWorld(){
