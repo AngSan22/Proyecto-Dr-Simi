@@ -10,7 +10,7 @@ public class Info extends Button
 {
     
     public  void clicked(){
-        Greenfoot.setWorld(new infoWorld());
+        Greenfoot.setWorld(new InfoWorld());
     }
     
 }

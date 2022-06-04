@@ -29,9 +29,9 @@ public class MyWorld extends World
         addObject(exit,222,194);
         Info info = new Info();
         addObject(info,200,830);
-        Score score = new Score();
-        addObject(score,353,269);
+        Puntaje puntaje = new Puntaje();
+        addObject(puntaje,353,269);
         exit.setLocation(600,830);
-        score.setLocation(800,830);
+        puntaje.setLocation(800,830);
     }
 }

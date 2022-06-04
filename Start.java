@@ -3,6 +3,10 @@ import greenfoot.*;
 public class Start extends Button
 {
     public  void clicked(){
-        Greenfoot.setWorld(new Estomago());
+        try{
+             Greenfoot.setWorld(new Estomago());
+        }catch(Exception ex){
+
+        }
     }
 }
