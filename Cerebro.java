@@ -24,6 +24,12 @@ public class Cerebro extends World
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(1000, 800, 1);
+        
+        if(drSim == null){
+            DrSimHud drSimHud= new DrSimHud();
+            drSim = new DrSim(drSimHud);
+        }
+        
         this.drSim = drSim;
         prepare();
     }

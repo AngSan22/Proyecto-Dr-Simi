@@ -25,6 +25,8 @@ public class Score extends World
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(800, 800, 1); 
         List<GameRecord> records = recordsManager.getRecords();
+        Back back = new Back();
+        addObject(back, 150, 750);
         
         int i = 0;
         for (GameRecord record: records)
@@ -32,8 +34,8 @@ public class Score extends World
             Counter score = new Counter();
             
             score.setValue(record.getScore());
-            addObject(score, 450,350+i);
-            this.showText(record.getPlayerName(), 350, 350+i);
+            addObject(score, 450,300+i);
+            this.showText(record.getPlayerName(), 350, 300+i);
             
             i+=80;
             

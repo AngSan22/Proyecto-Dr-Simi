@@ -1,5 +1,9 @@
  Tadeo,990
+Si,820
 ZZZ,640
 Pidu,270
+Rebeca 2,170
+Tadeo,170
 z,150
+Rebeca ,150
 Pidu,0

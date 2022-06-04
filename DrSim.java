@@ -100,6 +100,7 @@ public class DrSim extends Actor
         if(isShotSpecial && energy == 0){
             getWorld().removeObject(vaccine);
             isShotSpecial = false;
+            drSimHud.setEnergySpecial(energy);
         }
     }
     
@@ -119,6 +120,8 @@ public class DrSim extends Actor
             
             energy = energy - 10;
             counterShotSpecial = 0;
+            
+            drSimHud.setEnergySpecial(energy - 10);
         }
     }
     
@@ -215,7 +218,5 @@ public class DrSim extends Actor
         }
     }
     
-    public DrSimHud getDrSimHud(){
-        return drSimHud;
-    }
+    
 }

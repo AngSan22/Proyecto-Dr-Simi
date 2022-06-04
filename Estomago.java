@@ -23,6 +23,7 @@ public class Estomago extends World
     public Estomago() throws Exception
     {    
         super(800, 800, 1); 
+        
         prepare();
     }
     

@@ -25,7 +25,7 @@ public class PulmonBoss extends World
     }
     
     private void prepare() throws Exception{
-        hud =drSim. getDrSimHud();
+        hud =drSim.getDrSimHud();
         addObject(hud, 0, 0);
 
         addObject(drSim, 50, 700);
